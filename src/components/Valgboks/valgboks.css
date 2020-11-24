@@ -1,0 +1,9 @@
+.valgboks {
+    display: flex;
+    width: 60%;
+    height: auto;
+    flex-direction: column;
+    background: #f9f9f8;
+    border: 1px solid black;
+    padding: 2em;
+}
