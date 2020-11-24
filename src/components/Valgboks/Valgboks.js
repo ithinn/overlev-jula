@@ -5,15 +5,16 @@ import "./valgboks.css";
 class Valgboks extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {value: ""}
+        this.state = {oppgaveValue: "", ansvarValue: ""}
         this.inpValue = this.inpValue.bind(this);
     }
 
     inpValue() {
-        let newValue = document.getElementById("oppgave_inp").value;
-        this.setState({value: newValue})
-        console.log(newValue)
-
+        let nyOppgave = document.getElementById("oppgave_inp").value;
+        let nyAnsvar = document.getElementById("ansvar_inp").value;
+        this.setState({oppgaveValue: nyOppgave, ansvarValue: nyAnsvar})
+        console.log(nyOppgave);
+        console.log(nyAnsvar);
     }
 
     render() {
@@ -31,6 +32,7 @@ class Valgboks extends React.Component {
                 type="text"
                 placeholder="Ansvar"
                 id="ansvar_inp"
+                value={this.state.newValue}
                 />
 
                 <button
