@@ -1,9 +1,11 @@
 import React from "react";
+import "./header.css";
 
 function Header() {
     return (
-        <header>
-            <h1>Skjema for velorganiserte juleforberedelser</h1>
+        <header className="note yellow">
+            <i className="pin"></i>
+            <h1>Få jula i havn</h1>
         </header>
     );
 }

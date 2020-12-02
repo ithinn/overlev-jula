@@ -1,30 +1,15 @@
 import React from "react";
-//import { oppdragsListe } from "../Valgboks/Valgboks";
 
 
 const ListItem = (props) => {
-    
-    const {oppdragsliste} = props;
-    console.log(oppdragsliste);
-    if (oppdragsliste.length > 0) {
-        return (
-            <tbody>
-            {oppdragsliste.map((oppgave, i) => (
-                <tr key={oppdragsliste.id}>
-                <td>
-                    <input id={oppgave[i]} type="checkbox" />
-                </td>
-                <td>{oppgave.oppgave}</td>
-                <td>{oppgave.ansvar}</td>
-            </tr>
-            )    
-            )}
-            </tbody>
-            );
-    } else {
-        return <tbody></tbody>;
-    }
-    
+    return (
+        <li className={props.oppgave.className} id={props.id}>
+            <input id={"inp"+props.id} onClick={props.func} type="checkbox" />
+            <p>{props.oppgave.oppgave}</p>
+            <p>{props.oppgave.ansvar}</p>
+            <p>{props.oppgave.frist}</p>
+        </li>
+    )
 }
 
 export default ListItem;

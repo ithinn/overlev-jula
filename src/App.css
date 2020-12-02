@@ -36,3 +36,46 @@
     transform: rotate(360deg);
   }
 }
+
+ul {
+  width: 90%;
+ 
+}
+li {
+  display: grid;
+  grid-template-columns: 10% 50% 1fr 1fr;
+  grid-template-rows: 2em;
+  width: 100%;
+  align-items: center;
+  list-style: none;
+  text-align: left;
+  border-bottom: 1px dotted #ccc;
+  margin-bottom: .5em;
+  height: auto;
+  padding: 1em;
+  font-family: "Indie Flower";
+  gap: .2em;
+  
+  position: relative;
+  left: -1.7em;
+  
+}
+
+body {
+  background-image: url("./img/korktavle.png");
+  background-position: cover;
+}
+
+p {
+  font-size: 1.4rem;
+}
+
+#liste_container {
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) ;
+  
+}
+
+

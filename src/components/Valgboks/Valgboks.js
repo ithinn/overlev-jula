@@ -1,78 +1,45 @@
 import React from "react";
 import "./valgboks.css";
-//import ListeTag from "./ListeTag/ListeTag.js";
 
 
+const Valgboks = (props) => {
 
+    return (
+        <div className="valgboks">
+            <div className="text-inp">
+            <label htmlFor="oppdrag_inp">Hva skal gjøres? </label>
+            <input id="oppdrag_inp" type="text" placeholder="Skriv inn oppgave"/>
+            </div>
 
-class Oppdrag {
-    constructor(oppgave, ansvar, id, className) {
-        this.oppgave = oppgave;
-        this.ansvar = ansvar;
-        this.checked = false;
-        this.id = id;
-        this.className = className
-    }
+            <div className="text-inp">
+            <label htmlFor="ansvar_inp">Hvem skal gjøre det? </label>
+            <input id="ansvar_inp" type="text" placeholder="Skriv inn ansvar"/>
+            </div>
 
+            <div className="text-inp">
+            <label htmlFor="frist_inp">Når må det være gjort? </label>
+            <input id="frist_inp" type="date" value="2020.12.24" placeholder="Skriv inn frist"/>
+            </div>
+            
+            <div id="radiovalg">
+                <span>Velg liste:</span>
+                
+                <div id="radio1">
+                <label id="radio_lab_gave"htmlFor="gave_radio">Gaver</label>
+                <input name="valg" id="gave_radio" type="radio" />
+                </div>
+                
+                <div id="radio2">
+                <label id="radio_lab_praktisk"htmlFor="praktisk_radio">Praktisk</label>
+                <input name="valg" id="praktisk_radio" type="radio"/>
+                </div>
+            </div>
+
+            <button id="legg_til_btn" onClick={props.func}>Legg til</button>
+            
+        </div>
+    )
 
 }
 
-
-let oppdragsListe = []
-    
-class Valgboks extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {oppgaveValue: "", ansvarValue: ""}
-        this.inpValue = this.inpValue.bind(this);
-    }
-
-    
-    
-
-    inpValue() {
-        
-        let nyOppgave = document.getElementById("oppgave_inp").value;
-        let nyAnsvar = document.getElementById("ansvar_inp").value;
-        let nyId = "oppgave" + Math.floor(Math.random()*100);
-        //this.setState({oppgaveValue: nyOppgave, ansvarValue: nyAnsvar})
-       
-        const mittOppdrag = new Oppdrag(nyOppgave, nyAnsvar, nyId, nyAnsvar);
-        oppdragsListe.push(mittOppdrag)
-        console.log(oppdragsListe);
-        return oppdragsListe;
-    }
-
-    render() {
-        
-        return (
-            <article className="valgboks">
-                <h2>Legg til ny oppgave</h2>
-                <input 
-                type="text"
-                placeholder="Oppgave"
-                id="oppgave_inp"
-                value={this.state.newValue}
-                />
-
-    
-                <input 
-                type="text"
-                placeholder="Ansvar"
-                id="ansvar_inp"
-                value={this.state.newValue}
-                />
-
-                <button
-                type="submit"
-                id="legg_til_Btn"
-                onClick={this.inpValue}
-                >Legg til i liste</button>
-
-
-            </article>
-        )
-    }
-}
-
-export {Valgboks, oppdragsListe};
+export default Valgboks;

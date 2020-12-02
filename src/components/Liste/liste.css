@@ -1,0 +1,72 @@
+.quote-container {
+    position: relative;
+}
+
+.note {
+    color: #333;
+    position: relative;
+    width: 13em;
+    margin: 1.2em auto 0 auto;
+    padding: 20px;
+    font-size: 1.5rem;
+    font-family: "Indie Flower";
+    box-shadow: 0 10px 10px 2px rgba(0, 0, 0, 0.3);
+    
+}
+
+.yellow {
+    /*background: #eae672;*/
+    background: #f9f9f8;
+    transform: rotate(2deg);
+}
+
+.pin {
+    background: #aaa;
+    display: block;
+    height: 32px;
+    width: 2px;
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    z-index: 1;
+}
+
+.pin:after {
+    background: #333;
+    background-image: radial-gradient(25% 25%, circle, hsla(0, 0%, 100%, .3), hsla(0, 0%, 0%, 0.3));
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 1px hsla(0,0%,0%,.1),
+              inset 3px 3px 3px hsla(0,0%,100%,.2),
+              inset -3px -3px 3px hsla(0,0%,0%,.2),
+              23px 20px 3px hsla(0,0%,0%,.15);
+    content: "";
+    height: 12px;
+    left: -5px;
+    position: absolute;
+    top: -10px;
+    width: 12px;
+}
+
+.pin:before {
+    background-color: hsla(0,0%,0%,0.1);
+    box-shadow: 0 0 .25em hsla(0,0%,0%,.1);
+    content: '';
+  
+    height: 24px;
+    width: 2px;
+    left: 0;
+    position: absolute;
+    top: 8px;
+  
+    transform: rotate(57.5deg);
+    -moz-transform: rotate(57.5deg);
+    -webkit-transform: rotate(57.5deg);
+    -o-transform: rotate(57.5deg);
+    -ms-transform: rotate(57.5deg);
+  
+    transform-origin: 50% 100%;
+    -moz-transform-origin: 50% 100%;
+    -webkit-transform-origin: 50% 100%;
+    -ms-transform-origin: 50% 100%;
+    -o-transform-origin: 50% 100%;
+  }
