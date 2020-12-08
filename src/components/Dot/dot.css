@@ -1,0 +1,47 @@
+.dot-container {
+    display: flex;
+    width: fit-content;
+}
+
+/*Sirkelen*/
+.gavedot, .praktiskdot {
+    width: .7em;
+    height: .7em;
+    margin: .2em;
+    border-radius: 50%;
+}
+
+.gavedot {
+    background: rgb(20, 111, 163);
+}
+
+.praktiskdot {
+    background: rgb(150, 118, 16);
+}
+
+
+/*Popup med info om oppdraget*/
+.dot-info {
+    width: 15em;
+    min-width: 5em;
+    height: 10em;
+    opacity: 0;
+    padding: 0 1em;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border: gray;
+    background: rgba(0, 0, 0, .5);
+    border-radius: 1em;
+    color: white;
+}
+
+.dot-info, p {   
+    font-size: 1rem;
+    margin-top: .2em;
+}
+
+
+

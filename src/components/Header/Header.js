@@ -1,12 +1,12 @@
 import React from "react";
-import "./header.css";
+
 
 function Header() {
     return (
-        <header className="note yellow">
+        <section className="post-it">
             <i className="pin"></i>
             <h1>Få jula i havn</h1>
-        </header>
+        </section>
     );
 }
 

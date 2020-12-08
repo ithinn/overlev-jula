@@ -2,7 +2,18 @@ import React from "react";
 import "./valgboks.css";
 
 
-const Valgboks = (props) => {
+const Valgboks = props => {
+
+    const handleKeyDown = e => {
+
+        let gave_radio = document.getElementById("gave_radio");
+        let praktisk_radio = document.getElementById("praktisk_radio");
+  
+        if (e.key === "Enter") {
+          !e.target.checked && e.target.id === "praktisk_radio" ? praktisk_radio.checked = true : praktisk_radio.checked = false;
+          !e.target.checked && e.target.id === "gave_radio" ? gave_radio.checked = true : gave_radio.checked = false;
+        }
+      }
 
     return (
         <div className="valgboks">
@@ -18,24 +29,37 @@ const Valgboks = (props) => {
 
             <div className="text-inp">
             <label htmlFor="frist_inp">Når må det være gjort? </label>
-            <input id="frist_inp" type="date" value="2020.12.24" placeholder="Skriv inn frist"/>
+            <input id="frist_inp" type="date" placeholder="Skriv inn frist"/>
             </div>
             
             <div id="radiovalg">
-                <span>Velg liste:</span>
+                <h2>Velg liste:</h2>
                 
-                <div id="radio1">
-                <label id="radio_lab_gave"htmlFor="gave_radio">Gaver</label>
-                <input name="valg" id="gave_radio" type="radio" />
-                </div>
-                
-                <div id="radio2">
-                <label id="radio_lab_praktisk"htmlFor="praktisk_radio">Praktisk</label>
-                <input name="valg" id="praktisk_radio" type="radio"/>
+                <div id="the-wrap">
+                    <div className="radio1 ball_wrapper">
+                        <div className="string"></div>
+                        <div className="ring"></div>
+                        <div className="button"></div>
+                        <div className="red-ball"> 
+                            <input onKeyDown={ handleKeyDown } name="valg" id="gave_radio" type="radio" />
+                            <label id="radio_lab_gave"htmlFor="gave_radio">Gaver</label>
+                        </div>
+                    </div>
+                    
+
+                    <div className="radio2 ball_wrapper">
+                        <div className="string"></div>
+                        <div className="ring"></div>
+                        <div className="button"></div>
+                        <div className="red-ball"> 
+                            <input onKeyDown={ handleKeyDown } name="valg" id="praktisk_radio" type="radio"/>
+                            <label id="radio_lab_praktisk" htmlFor="praktisk_radio">Praktisk</label>
+                        </div>
+                    </div>       
                 </div>
             </div>
 
-            <button id="legg_til_btn" onClick={props.func}>Legg til</button>
+            <button id="legg_til_btn" onClick={ props.func } >Legg til</button>
             
         </div>
     )

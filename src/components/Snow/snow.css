@@ -1,0 +1,21 @@
+.snowwrapper {
+    width: 100%;
+    height: 250vh;
+    top: -1em;
+    padding: 3em;
+    opacity: 0.9;
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    z-index: 5;
+    color: white;
+    background: rgb(6,4,40);
+    background: linear-gradient(180deg, rgba(6,4,40,1) 0%, rgba(21,0,127,1) 100%);
+    transition: 5s;
+}
+
+#remove {
+   position: absolute;
+   right: 1em;
+   top: 2em;
+}
