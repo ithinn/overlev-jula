@@ -48,7 +48,7 @@ const Kalender = props => {
         <article id="kal_container">
            
             <h2>Desember</h2>
-            <div id="kal_måned">
+            <div id="kal_mnd">
                 { DAGLISTE }    
             </div>
             

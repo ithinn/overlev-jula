@@ -137,7 +137,6 @@ input[type="radio"] {
 }
 
 #radio_lab_praktisk, #radio_lab_gave {
-    background-color: none;
     border-radius: 50%;
     height: 4.5em;
     width: 4.5em;

@@ -11,7 +11,7 @@
     padding: 1em;
 }
 
-#kal_måned {
+#kal_mnd {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: repeat(5, 1fr);
@@ -23,7 +23,7 @@
 
 @media (min-width: 1150px) {
 
-    #kal_måned {
+    #kal_mnd {
         width: 80%;
         padding: 2em;
     }
