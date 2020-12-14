@@ -1,0 +1,159 @@
+.valgboks {
+    display: flex;
+    width: 100%;
+    max-width: 30em;
+    height: auto;
+    flex-direction: column;
+    background: #f9f9f8;
+    border: 5px solid white;
+    padding: 2em;
+    margin-bottom: 2em;
+    background: #942929;
+    color: white;
+}
+
+#radiovalg, #the-wrap, .red-ball, #radio_lab_praktisk, #radio_lab_gave {
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+}
+
+/*Vanlige inputs*/
+
+input  {
+    font-size: 1rem;
+    padding: .2em;
+    width: 100%;
+}
+
+input[type="text"], input[type="date"] {
+    border: 3px solid white;
+    margin-top: 1em;
+
+}
+
+label {
+    font-size: 1.1rem;  
+}
+
+.text-inp {
+    margin-bottom: 1em;
+}
+
+/*Button*/
+
+#legg_til_btn {
+    margin: 2em auto 0 auto;
+    width: 60%;
+    font-size: 1.5rem;
+    padding: 1em;
+    border-radius: 10em;
+    background: white;
+    border: none;
+    color: #333333;
+    font-weight: 600;
+}
+
+#legg_til_btn:active {
+    background: rgba(0,0,0,.5);
+    color: white;
+}
+
+#legg_til_btn:hover {
+    color: #942929;
+    font-weight: 900;
+}
+
+
+/*Julekuler*/
+
+#radiovalg, .ball_wrapper {
+    flex-direction: column;
+}
+
+#radiovalg {
+    width: 100%;
+    align-items: center;
+    height: auto;
+    margin-top: 2em;
+}
+
+#the-wrap {
+    width: 100%;
+    margin: 0 auto;
+    flex-direction: row;  
+}
+
+.ball_wrapper {
+   margin: 1em;
+   display: flex;
+   justify-content: center;
+}
+
+.ring {
+    height: 15px;
+    width: 5px;
+    background: #c03636;
+    border: 2px solid #f99d24;
+    border-radius: 45%;
+    position: relative;
+    left: 2.4em;
+    top: 12px;
+}
+
+.string {
+    width: 1.5px;
+    position: relative;
+    background-color: #f99d24;
+    height: 20px;
+    left: 2.5em;
+    top: 12.4px;
+    margin-top: -20px;
+}
+
+.button {
+    height: 17px;
+    width: 22px; 
+    background: #f99d24;
+    position: relative;
+    left: 1.9em;
+    top: 7px;
+    border-radius: 4px;
+}
+
+.red-ball {
+    background: rgb(130,142,201);
+    background: radial-gradient(circle, rgba(130,142,201,1) 0%, rgba(47,67,165,1) 100%);
+    border-radius: 50%;
+    height: 5em;
+    width: 5em;
+    position: relative;
+    left: 0em;
+}
+
+input[type="radio"] {
+    width: 1px;
+    height: 1px;
+}
+
+#radio_lab_praktisk, #radio_lab_gave {
+    border-radius: 50%;
+    height: 4.5em;
+    width: 4.5em;
+    position: relative;
+}
+
+input[type="radio"]:checked + label {
+    background: rgb(137,155,112);
+    background: radial-gradient(circle, rgba(137,155,112,1) 0%, rgba(58,88,16,1) 100%);
+    color: white;
+    font-weight: 600;
+    text-decoration: underline;
+    border: 3px solid white;
+}
+
+
+
+
+
+
