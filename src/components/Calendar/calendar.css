@@ -1,0 +1,57 @@
+#cal_container {
+    width: 100%;
+    max-width: 90em;
+    height: auto;
+    background:#e7e7e6;
+    margin: 2em auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    padding: 1em;
+}
+
+#cal_mnd {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    row-gap: 1em;
+    column-gap: .1em;
+    margin: 1em;
+    width: 100%;
+}
+
+@media (min-width: 1150px) {
+
+    #cal_mnd {
+        width: 80%;
+        padding: 2em;
+    }
+
+}
+
+.december-day {
+    background: white; 
+    width: 100%;
+    height: 4em;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border-radius: 3px;
+}
+
+.date {
+    color: gray;
+}
+
+/*Spesifike kalenderdager*/
+#d0 {
+    opacity: 0;
+}
+#d1 {
+    grid-column: 2/ span 1;
+}
+
+
+

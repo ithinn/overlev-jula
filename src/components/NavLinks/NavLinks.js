@@ -6,11 +6,11 @@ const NavLinks = () => {
     const location = useLocation();
     
     // Lenken skal toggle mellom kalendervisning og listevisning
-    let to = location.pathname === "/" ? "/kalender" : "/";
+    let to = location.pathname === "/" ? "/calendar" : "/";
     let visning= location.pathname === "/" ? "kalendervisning" : "listevisning";
   
     return (        
-        <button tabIndex="-1" id="skiftBtn">
+        <button tabIndex="-1" id="toggleBtn">
             <NavLink 
                 tabIndex="0" 
                 className="link" 

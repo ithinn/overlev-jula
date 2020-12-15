@@ -11,7 +11,7 @@
     color: white;
     background: rgb(6,4,40);
     background: linear-gradient(180deg, rgba(6,4,40,1) 0%, rgba(21,0,127,1) 100%);
-    transition: 5s;
+    transition: 8s;
 }
 
 #remove {

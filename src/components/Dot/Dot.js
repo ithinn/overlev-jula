@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import "./dot.css";
 import { IoIosCloseCircleOutline } from "react-icons/io"
 import { IconContext } from "react-icons/lib";
@@ -45,26 +45,26 @@ const Dot = props => {
         <IconContext.Provider
             value={{ style: {width: "2em", height: "2em" }}}>
        
-        <div 
-            onKeyDown={ handleInfoKey }
-            onClick={ handleShowInfoClick } 
-            tabIndex="0" 
-            className={ props.className } 
-            id={ "container" + props.altOmDot.id }>
-
             <div 
-                className="dot-info" 
-                id={ "dot" + props.altOmDot.id }> 
+                onKeyDown={ handleInfoKey }
+                onClick={ handleShowInfoClick } 
+                tabIndex="0" 
+                className={ props.className } 
+                id={ "container" + props.dotInfo.id }>
 
-                    <IoIosCloseCircleOutline 
-                        onKeyDown={ handleInfoKey } 
-                        onClick={ handleHideInfoClick } 
-                        tabIndex="0" 
-                        id={ "out" + props.altOmDot.id }/>
-                    <p>Oppgave: { props.altOmDot.oppgave }</p>
-                    <p>Ansvar: { props.altOmDot.ansvar }</p>   
+                <div 
+                    className="dot-info" 
+                    id={ "dot" + props.dotInfo.id }> 
+                    
+                        <IoIosCloseCircleOutline 
+                            onKeyDown={ handleInfoKey } 
+                            onClick={ handleHideInfoClick } 
+                            tabIndex="0" 
+                            id={ "out" + props.dotInfo.id }/>
+                        <p>Oppgave: { props.dotInfo.oppgave }</p>
+                        <p>Ansvar: { props.dotInfo.ansvar }</p>   
+                </div>
             </div>
-        </div>
 
         </IconContext.Provider>
     );

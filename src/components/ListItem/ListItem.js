@@ -1,6 +1,6 @@
 import React from "react";
-import "./listItem.css";
 import ButtonX from "../ButtonX/ButtonX";
+import "./listItem.css";
 
 const ListItem = props => {
 

@@ -6,11 +6,7 @@ body {
   background-image: url("./img/korktavle.png");
   background-position: cover;
   overflow-x: hidden; 
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  font-family: "Roboto", sans-serif;
 }
 
 header {
@@ -31,12 +27,12 @@ p {
 }
 
 #list_wrap {
-  width: 100%;
+  width: 90vw;
   max-width: 60em;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) ;
   justify-items: center;
-  position: relative;
+  position: relative;   
 }
 
 

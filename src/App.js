@@ -1,23 +1,27 @@
 import React, { useState } from "react";
-import './App.css';
-import Valgboks from "./components/Valgboks/Valgboks";
-import Moment from "moment";
+import ChooseTask from "./components/ChooseTask/ChooseTask";
 import Header from "./components/Header/Header";
-import Liste from "./components/Liste/Liste";
-import Kalender from "./components/Kalender/Kalender";
+import List from "./components/List/List";
+import Calendar from "./components/Calendar/Calendar";
+import Snow from "./components/Snow/Snow"
+import NavLinks from "./components/NavLinks/NavLinks"
+import Task from "./components/Task/Task"
 import { 
   BrowserRouter as Router,
   Route,
   Switch } from "react-router-dom";
-import Snow from "./components/Snow/Snow"
-import NavLinks from "./components/NavLinks/NavLinks"
+import './App.css';
 
 
 const App = () => {
 
+  //--------------------------------------------------------------------
+  //STATE
+  //--------------------------------------------------------------------
+
   const [tasks, setTasks] = useState([]);
-  const [isTasksGaver, setisTasksGaver] = useState(false)
-  const [isTasksPraktisk, setisTasksPraktisk] = useState(false)
+  const [isTasksBuy, setisTasksBuy] = useState(false)
+  const [isTasksDo, setisTasksDo] = useState(false)
   const [snow, setSnow] = useState(false);
   
 
@@ -25,44 +29,37 @@ const App = () => {
   //LEGGE TIL TASKS
   //---------------------------------------------------------------------  
 
-  //Oppretter nye objekter i tasks
-  class Task {
-    constructor(oppgave, ansvar, frist, className) {
-      this.oppgave = oppgave;
-      this.ansvar = ansvar;
-      this.frist = Moment(frist).format("DD/MM");
-      this.className = className;
-      this.id = "key" + Math.floor(Math.random()*1000);
-    }
-  }
-
-  //Oppdaterer tasks
   const handleAddTask = () => {
-    let COPY = [...tasks];
+    let copy = [...tasks];
 
-    let oppdragsInput = document.getElementById("oppdrag_inp");
-    let ansvarsInput = document.getElementById("ansvar_inp");
-    let fristInput = document.getElementById("frist_inp");
-    let gave_radio = document.getElementById("gave_radio");
-    let praktisk_radio = document.getElementById("praktisk_radio");
+    let whatInp = document.getElementById("what_inp");
+    let whoInp = document.getElementById("who_inp");
+    let whenInp = document.getElementById("when_inp");
+    let buyRadio = document.getElementById("buyRadio");
+    let doRadio = document.getElementById("doRadio");
     let className = "";
 
     //Utdeler klassenavn til ny oppgave basert på om bruker vil legge det til i "Gaver" eller "Praktisk". 
     //Endrer state for isTasks
-    if (gave_radio.checked) {
-      className="gaveliste"
-      setisTasksGaver(true)
-    } else if (praktisk_radio.checked) {
-      className="praktiskliste"
-      setisTasksPraktisk(true)
+    //Lager feilmelding hvis ingen av listene er valgt
+    if (buyRadio.checked) {
+      className="buy-list"
+      setisTasksBuy(true)
+
+    } else if (doRadio.checked) {
+      className="do-list"
+      setisTasksDo(true)
+
+    } else if (!doRadio.checked && !buyRadio.checked) {
+      alert("Du må velge hvilken liste du vil legge oppgaven i.");
     }
 
     //Oppretter ny oppgave og tildeler properties basert på inputfeltenes values. 
-    const mittOppdrag = new Task(oppdragsInput.value, ansvarsInput.value, fristInput.value, className );
+    const myTask = new Task(whatInp.value, whoInp.value, whenInp.value, className );
 
-    COPY.push(mittOppdrag);
+    copy.push(myTask);
 
-    setTasks(COPY);
+    setTasks(copy);
   }
 
   
@@ -73,35 +70,35 @@ const App = () => {
   const handleDeleteItemClick = e => {
    
     //Fjerner oppgaven fra tasks og listevisningen
-    const COPY = [...tasks];
-    let li_id = e.target.parentNode.id.substring(4);
+    const copy = [...tasks];
+    let listItemIndex = e.target.parentNode.id.substring(4);
 
-    COPY.splice(li_id, 1);
-    setTasks(COPY);
+    copy.splice(listItemIndex, 1);
+    setTasks(copy);
 
     //Oppretter midlertidige lister basert på klassenavn
-    const GAVER = [];
-    const PRAKTISK = [];
+    const buyTemp = [];
+    const doTemp = [];
 
-    COPY.forEach(el => {
-      if(el.className === "gaveliste") {
-        GAVER.push(el)
+    copy.forEach(el => {
+      if(el.className === "buy-list") {
+        buyTemp.push(el)
       } else {
-        PRAKTISK.push(el);
+        doTemp.push(el);
       }
     })
 
     //Sjekker om listene er tomme, og endrer isTasks hvis de er det
-    if(GAVER.length === 0) {
-      setisTasksGaver(false)
+    if(buyTemp.length === 0) {
+      setisTasksBuy(false)
     } 
     
-    if (PRAKTISK.length === 0) {
-      setisTasksPraktisk(false);
+    if (doTemp.length === 0) {
+      setisTasksDo(false);
     }
 
     //Setter i gang snø og julemusikk hvis det ikke ligger noe i noen av listene. 
-    if(GAVER.length === 0 && PRAKTISK.length === 0) {
+    if(buyTemp.length === 0 && doTemp.length === 0) {
       setSnow(true)
     }
   }
@@ -114,14 +111,11 @@ const App = () => {
 
   const handleCheckStatusClick = e => {
 
-    let inp_id = "inp" + e.target.parentNode.id;
+    //Henter ut det ListItemet checkboxen hører til
     let listItem_id = e.target.parentNode.id;
-
-    //Henter ut den checkboxen som er klikka på
-    const checkbox = document.getElementById(inp_id);
+    const listItem = document.getElementById(listItem_id);
 
     //Henter ut en liste med alle checkboxer, og gjør den om til et array
-    const listeItem = document.getElementById(listItem_id);
     const inpList = document.querySelectorAll(".inpList");
     const inpArray = Array.from(inpList);
 
@@ -131,13 +125,12 @@ const App = () => {
     if (inpArray.every(isChecked)) {
       setTimeout(function() { 
       setSnow(true);
-      }, 3000);
+      }, 1000);
 
     }
-    
-    //Gir list-itemet som checkboxen hører til ny klasse basert på om checkboxen er sjekka eller ikke
-    checkbox.checked ? listeItem.classList.add("checkedOut") : listeItem.classList.add("checkedIn");
-    
+
+    //Legger til checkedOut-class når input er sjekka
+    listItem.classList.toggle("checkedOut");
   }
 
 
@@ -145,7 +138,6 @@ const App = () => {
   //SNØFALL OG JULEMUSIKK
   //----------------------------------------------------------------------
 
-  //Fjerner snø og sang
   const handleSnowClick = () => {
     setSnow(false);
   }
@@ -161,29 +153,29 @@ const App = () => {
         </header>
 
         <main>
-          <Valgboks func={ () => handleAddTask() } />
+          <ChooseTask func={ () => handleAddTask() } />
           
           <Switch>
             <Route exact path="/">
               <div id="list_wrap">
-                <Liste 
-                oppgaveliste={ tasks } 
-                navn="Gaver" 
-                isTasks={ isTasksGaver } 
+                <List 
+                taskList={ tasks } 
+                title="Gaver" 
+                isTasks={ isTasksBuy } 
                 delete={ handleDeleteItemClick } 
                 checkStatus={ handleCheckStatusClick }/>
                 
-                <Liste 
-                oppgaveliste={ tasks } 
-                navn="Praktisk" 
-                isTasks={ isTasksPraktisk } 
+                <List 
+                taskList={ tasks } 
+                title="Praktisk" 
+                isTasks={ isTasksDo } 
                 delete={ handleDeleteItemClick } 
                 checkStatus={ handleCheckStatusClick }/>
               </div>
             </Route>
 
-            <Route path="/kalender">
-                <Kalender oppgaveliste={ tasks }/> 
+            <Route path="/calendar">
+                <Calendar taskList={ tasks }/> 
             </Route>
             
           </Switch>
