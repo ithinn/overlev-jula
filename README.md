@@ -1,4 +1,3 @@
-First React project: A Christmas-related todo-list.
 
 # Getting Started with Create React App
 
